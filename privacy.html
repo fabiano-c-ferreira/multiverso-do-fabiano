@@ -3,62 +3,396 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Personal Automations</title>
+  <title>Privacy Policy — Multiverso do Fabiano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 0 24px;
-      color: #1a1a1a;
-      line-height: 1.7;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --void: #020308;
+      --aurora-blue: #4fc3f7;
+      --aurora-purple: #b388ff;
+      --aurora-pink: #f48fb1;
+      --aurora-gold: #ffd54f;
+      --text-primary: #f0ecff;
+      --text-muted: rgba(220,210,240,0.72);
     }
-    h1 { font-size: 2rem; margin-bottom: 4px; }
-    h2 { font-size: 1.2rem; margin-top: 36px; }
-    p, li { font-size: 1rem; color: #333; }
-    .updated { color: #888; font-size: 0.9rem; margin-bottom: 40px; }
-    a { color: #0066cc; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      background: var(--void);
+      color: var(--text-primary);
+      font-family: 'Crimson Pro', Georgia, serif;
+      cursor: none;
+      overflow-x: hidden;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      position: fixed; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--aurora-blue);
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: background .3s, width .3s, height .3s;
+      box-shadow: 0 0 15px var(--aurora-blue), 0 0 30px rgba(79,195,247,.4);
+      mix-blend-mode: screen;
+    }
+    .cursor-ring {
+      position: fixed; width: 32px; height: 32px;
+      border-radius: 50%; border: 1px solid rgba(179,136,255,.5);
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width .3s, height .3s;
+    }
+
+    /* Background — topo da imagem, mostra o portal e as cidades */
+    .bg-image {
+      position: fixed; inset: 0; z-index: 0;
+      background-image: url('./bg.jpg');
+      background-size: cover;
+      background-position: center 10%; /* topo — portal e cidades */
+      background-repeat: no-repeat;
+      filter: brightness(.3) saturate(1.2);
+    }
+
+    .bg-overlay {
+      position: fixed; inset: 0; z-index: 1;
+      background:
+        radial-gradient(ellipse 100% 50% at 50% 0%,  rgba(2,3,8,.6)  0%, transparent 100%),
+        radial-gradient(ellipse 40%  100% at 0%  50%, rgba(2,3,8,.75) 0%, transparent 100%),
+        radial-gradient(ellipse 40%  100% at 100% 50%,rgba(2,3,8,.75) 0%, transparent 100%),
+        radial-gradient(ellipse 100% 40% at 50% 100%,rgba(2,3,8,.95) 0%, transparent 100%);
+    }
+
+    .vignette {
+      position: fixed; inset: 0; z-index: 2;
+      background: radial-gradient(ellipse 130% 130% at 50% 50%, transparent 20%, rgba(2,3,8,.75) 100%);
+      pointer-events: none;
+    }
+
+    #stars {
+      position: fixed; inset: 0; z-index: 3;
+      pointer-events: none; mix-blend-mode: screen;
+    }
+
+    /* Layout */
+    .page {
+      position: relative; z-index: 10;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    /* Header */
+    .page-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      animation: rise 1.8s cubic-bezier(.16,1,.3,1) .2s forwards;
+      opacity: 0;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .back-link {
+      display: inline-flex; align-items: center; gap: .5em;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: .6rem; letter-spacing: .3em;
+      text-transform: uppercase; text-decoration: none;
+      color: rgba(179,136,255,.6);
+      transition: color .3s;
+      margin-bottom: 2rem;
+    }
+    .back-link:hover { color: var(--aurora-purple); }
+
+    .eyebrow {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(.5rem, 1.2vw, .68rem);
+      letter-spacing: .4em; color: var(--aurora-blue);
+      text-transform: uppercase; margin-bottom: 1rem; opacity: .8;
+    }
+
+    h1 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.3rem, 3.5vw, 2.5rem);
+      font-weight: 700; line-height: 1.15;
+      background: linear-gradient(135deg,
+        #fff 0%, var(--aurora-blue) 30%,
+        var(--aurora-purple) 65%, var(--aurora-pink) 100%
+      );
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 30px rgba(179,136,255,.4));
+      margin-bottom: .5rem;
+    }
+
+    .updated {
+      font-size: .85rem; font-style: italic;
+      color: rgba(200,190,220,.4); letter-spacing: .05em;
+    }
+
+    .divider {
+      width: 55px; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(179,136,255,.5), transparent);
+      margin: 1.8rem auto 0;
+    }
+
+    /* Content */
+    .content {
+      animation: rise 1.8s cubic-bezier(.16,1,.3,1) .5s forwards;
+      opacity: 0;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+      padding: 2rem 2.2rem;
+      background: rgba(6,9,26,.55);
+      border: 1px solid rgba(179,136,255,.1);
+      border-radius: 4px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: border-color .4s;
+    }
+
+    section:hover {
+      border-color: rgba(179,136,255,.22);
+    }
+
+    h2 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(.75rem, 1.8vw, 1rem);
+      font-weight: 400;
+      color: var(--aurora-purple);
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+      padding-bottom: .7rem;
+      border-bottom: 1px solid rgba(179,136,255,.15);
+    }
+
+    p {
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-muted);
+      margin-bottom: .8rem;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul {
+      list-style: none;
+      margin: .5rem 0;
+    }
+
+    ul li {
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text-muted);
+      padding: .2rem 0 .2rem 1.4rem;
+      position: relative;
+    }
+
+    ul li::before {
+      content: '✦';
+      position: absolute; left: 0;
+      color: rgba(179,136,255,.5);
+      font-size: .6rem;
+      top: .55em;
+    }
+
+    strong {
+      color: rgba(200,185,255,.9);
+      font-weight: 400;
+    }
+
+    a {
+      color: var(--aurora-blue);
+      text-decoration: none;
+      transition: color .3s;
+    }
+    a:hover { color: #fff; }
+
+    /* Footer */
+    footer {
+      position: relative; z-index: 10;
+      padding: 1rem 2rem 3rem;
+      text-align: center;
+      font-size: .62rem; letter-spacing: .18em;
+      color: rgba(200,190,220,.22); text-transform: uppercase;
+    }
+
+    /* Particles */
+    .particle {
+      position: fixed; border-radius: 50%;
+      pointer-events: none; z-index: 4;
+      animation: floatUp linear infinite;
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      5%   { opacity: 1; transform: translateY(95vh) scale(1); }
+      95%  { opacity: .4; }
+      100% { transform: translateY(-5vh) scale(.4); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 3rem 1.2rem 5rem; }
+      section { padding: 1.4rem 1.2rem; }
+      h1 { font-size: 1.3rem; }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Privacy Policy</h1>
-  <p class="updated">Last updated: April 16, 2026</p>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="ring"></div>
 
-  <h2>Overview</h2>
-  <p>This privacy policy describes how the Personal Automations app ("the App") accesses and uses data from Google and third-party services. The App is a personal automation tool built on a self-hosted n8n instance, used exclusively by its owner (Fabiano Ferreira) to automate personal workflows.</p>
+  <div class="bg-image"></div>
+  <div class="bg-overlay"></div>
+  <div class="vignette"></div>
+  <canvas id="stars"></canvas>
 
-  <h2>What the App Does</h2>
-  <p>The App connects to various APIs to automate personal tasks, including but not limited to:</p>
-  <ul>
-    <li>Reading and updating YouTube video metadata (titles, descriptions, translations, privacy status, and scheduling)</li>
-    <li>Reading content from Notion databases to use as input for automations</li>
-    <li>Any other personal workflow automation the owner may configure in the future</li>
-  </ul>
+  <main class="page">
 
-  <h2>Who Uses This App</h2>
-  <p>This App is for <strong>personal use only</strong>. It is not distributed to third parties and has no end users other than its owner. No other person has access to this App or its data.</p>
+    <header class="page-header">
+      <a href="./" class="back-link">← Voltar ao Multiverso</a>
+      <p class="eyebrow">Multiverso do Fabiano</p>
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: April 16, 2026</p>
+      <div class="divider"></div>
+    </header>
 
-  <h2>Data Access</h2>
-  <p>The App accesses user account data solely to perform the automation tasks described above. No data is collected, stored, shared, or sold to any third party. All data accessed is used exclusively to execute the owner's personal automations.</p>
+    <div class="content">
 
-  <h2>Data Storage</h2>
-  <p>No user data is stored outside of the owner's own self-hosted infrastructure (n8n instance running on a private server managed via Coolify). No data is transmitted to external servers beyond the APIs required to perform each automation task.</p>
+      <section>
+        <h2>Overview</h2>
+        <p>This privacy policy describes how the Personal Automations app ("the App") accesses and uses data from Google and third-party services. The App is a personal automation tool built on a self-hosted n8n instance, used exclusively by its owner (Fabiano Ferreira) to automate personal workflows.</p>
+      </section>
 
-  <h2>Third-Party Services</h2>
-  <p>The App may connect to the following third-party services depending on the automation:</p>
-  <ul>
-    <li><strong>YouTube Data API v3</strong> (Google LLC) — to read and update video metadata</li>
-    <li><strong>Google OAuth2</strong> — for authentication</li>
-    <li><strong>Notion API</strong> — to read content used as input for automations</li>
-    <li><strong>n8n</strong> (self-hosted) — as the automation platform</li>
-  </ul>
+      <section>
+        <h2>What the App Does</h2>
+        <p>The App connects to various APIs to automate personal tasks, including but not limited to:</p>
+        <ul>
+          <li>Reading and updating YouTube video metadata (titles, descriptions, translations, privacy status, and scheduling)</li>
+          <li>Reading content from Notion databases to use as input for automations</li>
+          <li>Any other personal workflow automation the owner may configure in the future</li>
+        </ul>
+      </section>
 
-  <h2>Changes to This Policy</h2>
-  <p>This policy may be updated as new automations are added. The "Last updated" date at the top reflects the most recent revision.</p>
+      <section>
+        <h2>Who Uses This App</h2>
+        <p>This App is for <strong>personal use only</strong>. It is not distributed to third parties and has no end users other than its owner. No other person has access to this App or its data.</p>
+      </section>
 
-  <h2>Contact</h2>
-  <p>For any questions regarding this privacy policy, contact: <a href="mailto:fabiano.c.ferreira@gmail.com">fabiano.c.ferreira@gmail.com</a></p>
+      <section>
+        <h2>Data Access</h2>
+        <p>The App accesses user account data solely to perform the automation tasks described above. No data is collected, stored, shared, or sold to any third party. All data accessed is used exclusively to execute the owner's personal automations.</p>
+      </section>
 
+      <section>
+        <h2>Data Storage</h2>
+        <p>No user data is stored outside of the owner's own self-hosted infrastructure (n8n instance running on a private server managed via Coolify). No data is transmitted to external servers beyond the APIs required to perform each automation task.</p>
+      </section>
+
+      <section>
+        <h2>Third-Party Services</h2>
+        <p>The App may connect to the following third-party services depending on the automation:</p>
+        <ul>
+          <li><strong>YouTube Data API v3</strong> (Google LLC) — to read and update video metadata</li>
+          <li><strong>Google OAuth2</strong> — for authentication</li>
+          <li><strong>Notion API</strong> — to read content used as input for automations</li>
+          <li><strong>n8n</strong> (self-hosted) — as the automation platform</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Changes to This Policy</h2>
+        <p>This policy may be updated as new automations are added. The "Last updated" date at the top reflects the most recent revision.</p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>For any questions regarding this privacy policy, contact: <a href="mailto:fabiano.c.ferreira@gmail.com">fabiano.c.ferreira@gmail.com</a></p>
+      </section>
+
+    </div>
+  </main>
+
+  <footer>
+    © 2026 · Multiverso do Fabiano · Todos os direitos reservados neste universo e nos adjacentes
+  </footer>
+
+  <script>
+    // Cursor
+    const cur = document.getElementById('cursor');
+    const rng = document.getElementById('ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e => {
+      mx=e.clientX; my=e.clientY;
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+    });
+    (function loop(){
+      rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+      rng.style.left=rx+'px'; rng.style.top=ry+'px';
+      requestAnimationFrame(loop);
+    })();
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{
+        cur.style.width='18px'; cur.style.height='18px';
+        cur.style.background='var(--aurora-purple)';
+        rng.style.width='48px'; rng.style.height='48px';
+      });
+      el.addEventListener('mouseleave',()=>{
+        cur.style.width='10px'; cur.style.height='10px';
+        cur.style.background='var(--aurora-blue)';
+        rng.style.width='32px'; rng.style.height='32px';
+      });
+    });
+
+    // Stars
+    const canvas=document.getElementById('stars');
+    const ctx=canvas.getContext('2d');
+    let stars=[];
+    function resize(){
+      canvas.width=window.innerWidth; canvas.height=window.innerHeight;
+      stars=[];
+      const n=Math.floor(canvas.width*canvas.height/7000);
+      for(let i=0;i<n;i++) stars.push({
+        x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+        r:Math.random()*1.1+.2, a:Math.random()*.5+.1,
+        phase:Math.random()*Math.PI*2, speed:Math.random()*.006+.002
+      });
+    }
+    let t=0;
+    function draw(){
+      ctx.clearRect(0,0,canvas.width,canvas.height); t++;
+      for(const s of stars){
+        const a=s.a*(.5+.5*Math.sin(t*s.speed+s.phase));
+        ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+        ctx.fillStyle=`rgba(255,255,255,${a})`; ctx.fill();
+      }
+      requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize',resize);
+    resize(); draw();
+
+    // Particles
+    const pColors=['rgba(79,195,247,.4)','rgba(179,136,255,.4)','rgba(244,143,177,.3)','rgba(255,213,79,.3)'];
+    function spawn(){
+      const p=document.createElement('div'); p.className='particle';
+      const sz=Math.random()*2+.5;
+      const c=pColors[Math.floor(Math.random()*pColors.length)];
+      const dur=Math.random()*18+12, del=Math.random()*8;
+      p.style.cssText=`width:${sz}px;height:${sz}px;background:${c};left:${Math.random()*100}vw;animation-duration:${dur}s;animation-delay:${del}s;box-shadow:0 0 ${sz*4}px ${c}`;
+      document.body.appendChild(p);
+      setTimeout(()=>p.remove(),(dur+del)*1000+500);
+    }
+    for(let i=0;i<15;i++) spawn();
+    setInterval(spawn,3000);
+  </script>
 </body>
 </html>
