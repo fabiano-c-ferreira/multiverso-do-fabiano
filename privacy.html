@@ -5,64 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Multiverso do Fabiano</title>
 
-  <!-- Preload da imagem de fundo -->
   <link rel="preload" as="image" href="./bg.webp" type="image/webp">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --void: #020308;
-      --aurora-blue: #4fc3f7;
-      --aurora-purple: #b388ff;
-      --aurora-pink: #f48fb1;
-      --aurora-gold: #ffd54f;
-      --text-primary: #f0ecff;
-      --text-muted: rgba(220,210,240,0.72);
+      --void: #020308; --aurora-blue: #4fc3f7; --aurora-purple: #b388ff;
+      --aurora-pink: #f48fb1; --aurora-gold: #ffd54f;
+      --text-primary: #f0ecff; --text-muted: rgba(220,210,240,0.72);
     }
-
     html { scroll-behavior: smooth; }
-
     body {
-      min-height: 100vh;
-      background: var(--void);
-      color: var(--text-primary);
-      font-family: 'Crimson Pro', Georgia, serif;
-      cursor: none;
-      overflow-x: hidden;
+      min-height: 100vh; background: var(--void); color: var(--text-primary);
+      font-family: 'Crimson Pro', Georgia, serif; cursor: none; overflow-x: hidden;
     }
-
     .cursor {
-      position: fixed; width: 10px; height: 10px;
-      border-radius: 50%; background: var(--aurora-blue);
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: background .3s, width .3s, height .3s;
-      box-shadow: 0 0 15px var(--aurora-blue), 0 0 30px rgba(79,195,247,.4);
-      mix-blend-mode: screen;
+      position: fixed; width: 10px; height: 10px; border-radius: 50%;
+      background: var(--aurora-blue); pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%); transition: background .3s, width .3s, height .3s;
+      box-shadow: 0 0 15px var(--aurora-blue), 0 0 30px rgba(79,195,247,.4); mix-blend-mode: screen;
     }
     .cursor-ring {
-      position: fixed; width: 32px; height: 32px;
-      border-radius: 50%; border: 1px solid rgba(179,136,255,.5);
-      pointer-events: none; z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: width .3s, height .3s;
+      position: fixed; width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid rgba(179,136,255,.5); pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%); transition: width .3s, height .3s;
     }
-
     .bg-image {
       position: fixed; inset: 0; z-index: 0;
-      background-image: url('./bg.webp');
-      background-size: cover;
-      background-position: center 10%;
-      background-repeat: no-repeat;
-      filter: brightness(.3) saturate(1.2);
-      will-change: transform;
+      background-image: url('./bg.webp'); background-size: cover;
+      background-position: center 10%; background-repeat: no-repeat;
+      filter: brightness(.3) saturate(1.2); will-change: transform;
     }
-
     .bg-overlay {
       position: fixed; inset: 0; z-index: 1;
       background:
@@ -71,152 +47,72 @@
         radial-gradient(ellipse 40%  100% at 100% 50%,rgba(2,3,8,.75) 0%, transparent 100%),
         radial-gradient(ellipse 100% 40% at 50% 100%,rgba(2,3,8,.95) 0%, transparent 100%);
     }
-
     .vignette {
       position: fixed; inset: 0; z-index: 2;
       background: radial-gradient(ellipse 130% 130% at 50% 50%, transparent 20%, rgba(2,3,8,.75) 100%);
       pointer-events: none;
     }
-
-    #stars {
-      position: fixed; inset: 0; z-index: 3;
-      pointer-events: none; mix-blend-mode: screen;
-    }
-
-    .page {
-      position: relative; z-index: 10;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 5rem 2rem 6rem;
-    }
-
-    .page-header {
-      text-align: center;
-      margin-bottom: 3.5rem;
-      animation: rise 1.8s cubic-bezier(.16,1,.3,1) .2s forwards;
-      opacity: 0;
-    }
-
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
+    #stars { position: fixed; inset: 0; z-index: 3; pointer-events: none; mix-blend-mode: screen; }
+    .page { position: relative; z-index: 10; max-width: 800px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+    .page-header { text-align: center; margin-bottom: 3.5rem; animation: rise 1.8s cubic-bezier(.16,1,.3,1) .2s forwards; opacity: 0; }
+    @keyframes rise { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .back-link {
       display: inline-flex; align-items: center; gap: .5em;
-      font-family: 'Cinzel Decorative', serif;
-      font-size: .6rem; letter-spacing: .3em;
-      text-transform: uppercase; text-decoration: none;
-      color: rgba(179,136,255,.6);
-      transition: color .3s;
-      margin-bottom: 2rem;
+      font-family: 'Cinzel Decorative', serif; font-size: .6rem; letter-spacing: .3em;
+      text-transform: uppercase; text-decoration: none; color: rgba(179,136,255,.6);
+      transition: color .3s; margin-bottom: 2rem;
     }
     .back-link:hover { color: var(--aurora-purple); }
-
     .eyebrow {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(.5rem, 1.2vw, .68rem);
-      letter-spacing: .4em; color: var(--aurora-blue);
-      text-transform: uppercase; margin-bottom: 1rem; opacity: .8;
+      font-family: 'Cinzel Decorative', serif; font-size: clamp(.5rem,1.2vw,.68rem);
+      letter-spacing: .4em; color: var(--aurora-blue); text-transform: uppercase; margin-bottom: 1rem; opacity: .8;
     }
-
     h1 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(1.3rem, 3.5vw, 2.5rem);
+      font-family: 'Cinzel Decorative', serif; font-size: clamp(1.3rem,3.5vw,2.5rem);
       font-weight: 700; line-height: 1.15;
-      background: linear-gradient(135deg,
-        #fff 0%, var(--aurora-blue) 30%,
-        var(--aurora-purple) 65%, var(--aurora-pink) 100%
-      );
+      background: linear-gradient(135deg, #fff 0%, var(--aurora-blue) 30%, var(--aurora-purple) 65%, var(--aurora-pink) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      filter: drop-shadow(0 0 30px rgba(179,136,255,.4));
-      margin-bottom: .5rem;
+      filter: drop-shadow(0 0 30px rgba(179,136,255,.4)); margin-bottom: .5rem;
     }
-
-    .updated {
-      font-size: .85rem; font-style: italic;
-      color: rgba(200,190,220,.4); letter-spacing: .05em;
-    }
-
-    .divider {
-      width: 55px; height: 1px;
-      background: linear-gradient(to right, transparent, rgba(179,136,255,.5), transparent);
-      margin: 1.8rem auto 0;
-    }
-
-    .content {
-      animation: rise 1.8s cubic-bezier(.16,1,.3,1) .5s forwards;
-      opacity: 0;
-    }
-
+    .updated { font-size: .85rem; font-style: italic; color: rgba(200,190,220,.4); letter-spacing: .05em; }
+    .divider { width: 55px; height: 1px; background: linear-gradient(to right, transparent, rgba(179,136,255,.5), transparent); margin: 1.8rem auto 0; }
+    .content { animation: rise 1.8s cubic-bezier(.16,1,.3,1) .5s forwards; opacity: 0; }
     section {
-      margin-bottom: 2.5rem;
-      padding: 2rem 2.2rem;
-      background: rgba(6,9,26,.55);
-      border: 1px solid rgba(179,136,255,.1);
-      border-radius: 4px;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      margin-bottom: 2rem; padding: 1.8rem 2.2rem;
+      background: rgba(6,9,26,.55); border: 1px solid rgba(179,136,255,.1);
+      border-radius: 4px; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       transition: border-color .4s;
     }
     section:hover { border-color: rgba(179,136,255,.22); }
-
     h2 {
-      font-family: 'Cinzel Decorative', serif;
-      font-size: clamp(.75rem, 1.8vw, 1rem);
-      font-weight: 400;
-      color: var(--aurora-purple);
-      letter-spacing: .08em;
-      margin-bottom: 1rem;
-      padding-bottom: .7rem;
-      border-bottom: 1px solid rgba(179,136,255,.15);
+      font-family: 'Cinzel Decorative', serif; font-size: clamp(.7rem,1.6vw,.9rem);
+      font-weight: 400; color: var(--aurora-purple); letter-spacing: .08em;
+      margin-bottom: 1rem; padding-bottom: .7rem; border-bottom: 1px solid rgba(179,136,255,.15);
     }
-
-    p {
-      font-size: clamp(1rem, 1.8vw, 1.1rem);
-      font-weight: 300; line-height: 1.85;
-      color: var(--text-muted); margin-bottom: .8rem;
-    }
+    p { font-size: clamp(1rem,1.8vw,1.1rem); font-weight: 300; line-height: 1.85; color: var(--text-muted); margin-bottom: .8rem; }
     p:last-child { margin-bottom: 0; }
-
     ul { list-style: none; margin: .5rem 0; }
     ul li {
-      font-size: clamp(1rem, 1.8vw, 1.1rem);
-      font-weight: 300; line-height: 1.85;
-      color: var(--text-muted);
-      padding: .2rem 0 .2rem 1.4rem;
-      position: relative;
+      font-size: clamp(1rem,1.8vw,1.1rem); font-weight: 300; line-height: 1.85;
+      color: var(--text-muted); padding: .2rem 0 .2rem 1.4rem; position: relative;
     }
-    ul li::before {
-      content: '✦'; position: absolute; left: 0;
-      color: rgba(179,136,255,.5); font-size: .6rem; top: .55em;
-    }
-
+    ul li::before { content: '✦'; position: absolute; left: 0; color: rgba(179,136,255,.5); font-size: .6rem; top: .55em; }
     strong { color: rgba(200,185,255,.9); font-weight: 400; }
-
+    .highlight { color: rgba(244,143,177,.85); font-style: italic; }
     a { color: var(--aurora-blue); text-decoration: none; transition: color .3s; }
     a:hover { color: #fff; }
-
     footer {
-      position: relative; z-index: 10;
-      padding: 1rem 2rem 3rem;
-      text-align: center;
-      font-size: .62rem; letter-spacing: .18em;
+      position: relative; z-index: 10; padding: 1rem 2rem 3rem;
+      text-align: center; font-size: .62rem; letter-spacing: .18em;
       color: rgba(200,190,220,.22); text-transform: uppercase;
     }
-
-    .particle {
-      position: fixed; border-radius: 50%;
-      pointer-events: none; z-index: 4;
-      animation: floatUp linear infinite;
-    }
+    .particle { position: fixed; border-radius: 50%; pointer-events: none; z-index: 4; animation: floatUp linear infinite; }
     @keyframes floatUp {
       0%   { transform: translateY(100vh) scale(0); opacity: 0; }
       5%   { opacity: 1; transform: translateY(95vh) scale(1); }
       95%  { opacity: .4; }
       100% { transform: translateY(-5vh) scale(.4); opacity: 0; }
     }
-
     @media (max-width: 600px) {
       .page { padding: 3rem 1.2rem 5rem; }
       section { padding: 1.4rem 1.2rem; }
@@ -228,7 +124,6 @@
 
   <div class="cursor" id="cursor"></div>
   <div class="cursor-ring" id="ring"></div>
-
   <div class="bg-image"></div>
   <div class="bg-overlay"></div>
   <div class="vignette"></div>
@@ -239,15 +134,17 @@
       <a href="./" class="back-link">← Voltar ao Multiverso</a>
       <p class="eyebrow">Multiverso do Fabiano</p>
       <h1>Privacy Policy</h1>
-      <p class="updated">Last updated: April 16, 2026</p>
+      <p class="updated">Last updated: April 17, 2026</p>
       <div class="divider"></div>
     </header>
 
     <div class="content">
+
       <section>
         <h2>Overview</h2>
         <p>This privacy policy describes how the Personal Automations app ("the App") accesses and uses data from Google and third-party services. The App is a personal automation tool built on a self-hosted n8n instance, used exclusively by its owner (Fabiano Ferreira) to automate personal workflows.</p>
       </section>
+
       <section>
         <h2>What the App Does</h2>
         <p>The App connects to various APIs to automate personal tasks, including but not limited to:</p>
@@ -257,18 +154,43 @@
           <li>Any other personal workflow automation the owner may configure in the future</li>
         </ul>
       </section>
+
       <section>
         <h2>Who Uses This App</h2>
         <p>This App is for <strong>personal use only</strong>. It is not distributed to third parties and has no end users other than its owner. No other person has access to this App or its data.</p>
       </section>
+
       <section>
-        <h2>Data Access</h2>
-        <p>The App accesses user account data solely to perform the automation tasks described above. No data is collected, stored, shared, or sold to any third party. All data accessed is used exclusively to execute the owner's personal automations.</p>
+        <h2>How the App Accesses Google User Data</h2>
+        <p>The App uses Google OAuth 2.0 to authenticate and request access only to the scopes required for its automation tasks. Specifically, the App requests access to:</p>
+        <ul>
+          <li><strong>YouTube Data API v3</strong> (<span class="highlight">https://www.googleapis.com/auth/youtube</span>) — used exclusively to read and update the owner's own YouTube channel video metadata, including titles, descriptions, localized translations, privacy status, and scheduled publish dates.</li>
+        </ul>
+        <p>The App does <strong>not</strong> access Gmail, Google Drive, Google Contacts, Google Calendar, or any other Google service unless explicitly listed above.</p>
       </section>
+
       <section>
-        <h2>Data Storage</h2>
-        <p>No user data is stored outside of the owner's own self-hosted infrastructure (n8n instance running on a private server managed via Coolify). No data is transmitted to external servers beyond the APIs required to perform each automation task.</p>
+        <h2>How Google User Data Is Used</h2>
+        <p>Google user data accessed by the App is used solely to perform the automation tasks described above. Specifically:</p>
+        <ul>
+          <li>Video titles and descriptions read from Notion are written to the owner's YouTube videos via the YouTube Data API</li>
+          <li>No Google user data is used for advertising, profiling, or any purpose other than the stated automation</li>
+        </ul>
       </section>
+
+      <section>
+        <h2>How Google User Data Is Stored</h2>
+        <ul>
+          <li>No Google user data is stored permanently. Data is processed in real time within the owner's self-hosted n8n instance and is not retained after each automation run.</li>
+          <li>Authentication tokens (OAuth 2.0 refresh tokens) are stored securely within the owner's self-hosted n8n instance on a private server, and are never shared with third parties.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>How Google User Data Is Shared</h2>
+        <p>Google user data is <strong>never shared, sold, or transferred</strong> to any third party. All data accessed remains within the owner's private infrastructure.</p>
+      </section>
+
       <section>
         <h2>Third-Party Services</h2>
         <p>The App may connect to the following third-party services depending on the automation:</p>
@@ -279,14 +201,17 @@
           <li><strong>n8n</strong> (self-hosted) — as the automation platform</li>
         </ul>
       </section>
+
       <section>
         <h2>Changes to This Policy</h2>
         <p>This policy may be updated as new automations are added. The "Last updated" date at the top reflects the most recent revision.</p>
       </section>
+
       <section>
         <h2>Contact</h2>
         <p>For any questions regarding this privacy policy, contact: <a href="mailto:fabiano.c.ferreira@gmail.com">fabiano.c.ferreira@gmail.com</a></p>
       </section>
+
     </div>
   </main>
 
@@ -295,69 +220,21 @@
   </footer>
 
   <script>
-    const cur = document.getElementById('cursor');
-    const rng = document.getElementById('ring');
+    const cur=document.getElementById('cursor'), rng=document.getElementById('ring');
     let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove', e => {
-      mx=e.clientX; my=e.clientY;
-      cur.style.left=mx+'px'; cur.style.top=my+'px';
-    });
-    (function loop(){
-      rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
-      rng.style.left=rx+'px'; rng.style.top=ry+'px';
-      requestAnimationFrame(loop);
-    })();
+    document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+    (function loop(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;rng.style.left=rx+'px';rng.style.top=ry+'px';requestAnimationFrame(loop);})();
     document.querySelectorAll('a,button').forEach(el=>{
-      el.addEventListener('mouseenter',()=>{
-        cur.style.width='18px'; cur.style.height='18px';
-        cur.style.background='var(--aurora-purple)';
-        rng.style.width='48px'; rng.style.height='48px';
-      });
-      el.addEventListener('mouseleave',()=>{
-        cur.style.width='10px'; cur.style.height='10px';
-        cur.style.background='var(--aurora-blue)';
-        rng.style.width='32px'; rng.style.height='32px';
-      });
+      el.addEventListener('mouseenter',()=>{cur.style.width='18px';cur.style.height='18px';cur.style.background='var(--aurora-purple)';rng.style.width='48px';rng.style.height='48px';});
+      el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';cur.style.background='var(--aurora-blue)';rng.style.width='32px';rng.style.height='32px';});
     });
-
-    const canvas=document.getElementById('stars');
-    const ctx=canvas.getContext('2d');
-    let stars=[];
-    function resize(){
-      canvas.width=window.innerWidth; canvas.height=window.innerHeight;
-      stars=[];
-      const n=Math.floor(canvas.width*canvas.height/7000);
-      for(let i=0;i<n;i++) stars.push({
-        x:Math.random()*canvas.width, y:Math.random()*canvas.height,
-        r:Math.random()*1.1+.2, a:Math.random()*.5+.1,
-        phase:Math.random()*Math.PI*2, speed:Math.random()*.006+.002
-      });
-    }
-    let t=0;
-    function draw(){
-      ctx.clearRect(0,0,canvas.width,canvas.height); t++;
-      for(const s of stars){
-        const a=s.a*(.5+.5*Math.sin(t*s.speed+s.phase));
-        ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fillStyle=`rgba(255,255,255,${a})`; ctx.fill();
-      }
-      requestAnimationFrame(draw);
-    }
-    window.addEventListener('resize',resize);
-    resize(); draw();
-
+    const canvas=document.getElementById('stars'),ctx=canvas.getContext('2d');let stars=[];
+    function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;stars=[];const n=Math.floor(canvas.width*canvas.height/7000);for(let i=0;i<n;i++)stars.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*1.1+.2,a:Math.random()*.5+.1,phase:Math.random()*Math.PI*2,speed:Math.random()*.006+.002});}
+    let t=0;function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);t++;for(const s of stars){const a=s.a*(.5+.5*Math.sin(t*s.speed+s.phase));ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${a})`;ctx.fill();}requestAnimationFrame(draw);}
+    window.addEventListener('resize',resize);resize();draw();
     const pColors=['rgba(79,195,247,.4)','rgba(179,136,255,.4)','rgba(244,143,177,.3)','rgba(255,213,79,.3)'];
-    function spawn(){
-      const p=document.createElement('div'); p.className='particle';
-      const sz=Math.random()*2+.5;
-      const c=pColors[Math.floor(Math.random()*pColors.length)];
-      const dur=Math.random()*18+12, del=Math.random()*8;
-      p.style.cssText=`width:${sz}px;height:${sz}px;background:${c};left:${Math.random()*100}vw;animation-duration:${dur}s;animation-delay:${del}s;box-shadow:0 0 ${sz*4}px ${c}`;
-      document.body.appendChild(p);
-      setTimeout(()=>p.remove(),(dur+del)*1000+500);
-    }
-    for(let i=0;i<15;i++) spawn();
-    setInterval(spawn,3000);
+    function spawn(){const p=document.createElement('div');p.className='particle';const sz=Math.random()*2+.5,c=pColors[Math.floor(Math.random()*pColors.length)],dur=Math.random()*18+12,del=Math.random()*8;p.style.cssText=`width:${sz}px;height:${sz}px;background:${c};left:${Math.random()*100}vw;animation-duration:${dur}s;animation-delay:${del}s;box-shadow:0 0 ${sz*4}px ${c}`;document.body.appendChild(p);setTimeout(()=>p.remove(),(dur+del)*1000+500);}
+    for(let i=0;i<15;i++)spawn();setInterval(spawn,3000);
   </script>
 </body>
 </html>
