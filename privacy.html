@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Multiverso do Fabiano</title>
+
+  <!-- Preload da imagem de fundo -->
+  <link rel="preload" as="image" href="./bg.webp" type="image/webp">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -30,7 +36,6 @@
       overflow-x: hidden;
     }
 
-    /* Custom cursor */
     .cursor {
       position: fixed; width: 10px; height: 10px;
       border-radius: 50%; background: var(--aurora-blue);
@@ -48,14 +53,14 @@
       transition: width .3s, height .3s;
     }
 
-    /* Background — topo da imagem, mostra o portal e as cidades */
     .bg-image {
       position: fixed; inset: 0; z-index: 0;
       background-image: url('./bg.webp');
       background-size: cover;
-      background-position: center 10%; /* topo — portal e cidades */
+      background-position: center 10%;
       background-repeat: no-repeat;
       filter: brightness(.3) saturate(1.2);
+      will-change: transform;
     }
 
     .bg-overlay {
@@ -78,7 +83,6 @@
       pointer-events: none; mix-blend-mode: screen;
     }
 
-    /* Layout */
     .page {
       position: relative; z-index: 10;
       max-width: 780px;
@@ -86,7 +90,6 @@
       padding: 5rem 2rem 6rem;
     }
 
-    /* Header */
     .page-header {
       text-align: center;
       margin-bottom: 3.5rem;
@@ -141,7 +144,6 @@
       margin: 1.8rem auto 0;
     }
 
-    /* Content */
     .content {
       animation: rise 1.8s cubic-bezier(.16,1,.3,1) .5s forwards;
       opacity: 0;
@@ -157,10 +159,7 @@
       -webkit-backdrop-filter: blur(16px);
       transition: border-color .4s;
     }
-
-    section:hover {
-      border-color: rgba(179,136,255,.22);
-    }
+    section:hover { border-color: rgba(179,136,255,.22); }
 
     h2 {
       font-family: 'Cinzel Decorative', serif;
@@ -175,49 +174,29 @@
 
     p {
       font-size: clamp(1rem, 1.8vw, 1.1rem);
-      font-weight: 300;
-      line-height: 1.85;
-      color: var(--text-muted);
-      margin-bottom: .8rem;
+      font-weight: 300; line-height: 1.85;
+      color: var(--text-muted); margin-bottom: .8rem;
     }
-
     p:last-child { margin-bottom: 0; }
 
-    ul {
-      list-style: none;
-      margin: .5rem 0;
-    }
-
+    ul { list-style: none; margin: .5rem 0; }
     ul li {
       font-size: clamp(1rem, 1.8vw, 1.1rem);
-      font-weight: 300;
-      line-height: 1.85;
+      font-weight: 300; line-height: 1.85;
       color: var(--text-muted);
       padding: .2rem 0 .2rem 1.4rem;
       position: relative;
     }
-
     ul li::before {
-      content: '✦';
-      position: absolute; left: 0;
-      color: rgba(179,136,255,.5);
-      font-size: .6rem;
-      top: .55em;
+      content: '✦'; position: absolute; left: 0;
+      color: rgba(179,136,255,.5); font-size: .6rem; top: .55em;
     }
 
-    strong {
-      color: rgba(200,185,255,.9);
-      font-weight: 400;
-    }
+    strong { color: rgba(200,185,255,.9); font-weight: 400; }
 
-    a {
-      color: var(--aurora-blue);
-      text-decoration: none;
-      transition: color .3s;
-    }
+    a { color: var(--aurora-blue); text-decoration: none; transition: color .3s; }
     a:hover { color: #fff; }
 
-    /* Footer */
     footer {
       position: relative; z-index: 10;
       padding: 1rem 2rem 3rem;
@@ -226,7 +205,6 @@
       color: rgba(200,190,220,.22); text-transform: uppercase;
     }
 
-    /* Particles */
     .particle {
       position: fixed; border-radius: 50%;
       pointer-events: none; z-index: 4;
@@ -257,7 +235,6 @@
   <canvas id="stars"></canvas>
 
   <main class="page">
-
     <header class="page-header">
       <a href="./" class="back-link">← Voltar ao Multiverso</a>
       <p class="eyebrow">Multiverso do Fabiano</p>
@@ -267,12 +244,10 @@
     </header>
 
     <div class="content">
-
       <section>
         <h2>Overview</h2>
         <p>This privacy policy describes how the Personal Automations app ("the App") accesses and uses data from Google and third-party services. The App is a personal automation tool built on a self-hosted n8n instance, used exclusively by its owner (Fabiano Ferreira) to automate personal workflows.</p>
       </section>
-
       <section>
         <h2>What the App Does</h2>
         <p>The App connects to various APIs to automate personal tasks, including but not limited to:</p>
@@ -282,22 +257,18 @@
           <li>Any other personal workflow automation the owner may configure in the future</li>
         </ul>
       </section>
-
       <section>
         <h2>Who Uses This App</h2>
         <p>This App is for <strong>personal use only</strong>. It is not distributed to third parties and has no end users other than its owner. No other person has access to this App or its data.</p>
       </section>
-
       <section>
         <h2>Data Access</h2>
         <p>The App accesses user account data solely to perform the automation tasks described above. No data is collected, stored, shared, or sold to any third party. All data accessed is used exclusively to execute the owner's personal automations.</p>
       </section>
-
       <section>
         <h2>Data Storage</h2>
         <p>No user data is stored outside of the owner's own self-hosted infrastructure (n8n instance running on a private server managed via Coolify). No data is transmitted to external servers beyond the APIs required to perform each automation task.</p>
       </section>
-
       <section>
         <h2>Third-Party Services</h2>
         <p>The App may connect to the following third-party services depending on the automation:</p>
@@ -308,17 +279,14 @@
           <li><strong>n8n</strong> (self-hosted) — as the automation platform</li>
         </ul>
       </section>
-
       <section>
         <h2>Changes to This Policy</h2>
         <p>This policy may be updated as new automations are added. The "Last updated" date at the top reflects the most recent revision.</p>
       </section>
-
       <section>
         <h2>Contact</h2>
         <p>For any questions regarding this privacy policy, contact: <a href="mailto:fabiano.c.ferreira@gmail.com">fabiano.c.ferreira@gmail.com</a></p>
       </section>
-
     </div>
   </main>
 
@@ -327,7 +295,6 @@
   </footer>
 
   <script>
-    // Cursor
     const cur = document.getElementById('cursor');
     const rng = document.getElementById('ring');
     let mx=0,my=0,rx=0,ry=0;
@@ -353,7 +320,6 @@
       });
     });
 
-    // Stars
     const canvas=document.getElementById('stars');
     const ctx=canvas.getContext('2d');
     let stars=[];
@@ -380,7 +346,6 @@
     window.addEventListener('resize',resize);
     resize(); draw();
 
-    // Particles
     const pColors=['rgba(79,195,247,.4)','rgba(179,136,255,.4)','rgba(244,143,177,.3)','rgba(255,213,79,.3)'];
     function spawn(){
       const p=document.createElement('div'); p.className='particle';
